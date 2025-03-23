@@ -29,6 +29,7 @@ class TransactionBase
     const STATUS_VOIDED                 = 'Voided';
     const STATUS_DECLINED               = 'Declined';
     const STATUS_REFUND_IN_PROCESSING   = 'RefundInProcessing';
+    const STATUS_SUSPENDED              = 'Suspended';
 
     private $statusAllowed = array(
         self::STATUS_CREATED,
@@ -41,6 +42,7 @@ class TransactionBase
         self::STATUS_VOIDED,
         self::STATUS_DECLINED,
         self::STATUS_REFUND_IN_PROCESSING,
+        self::STATUS_SUSPENDED
     );
 
     const MERCHANT_TYPE_SALE = 'SALE';
@@ -418,5 +420,13 @@ class TransactionBase
     public function isStatusRefundInProcessing()
     {
         return $this->status == self::STATUS_REFUND_IN_PROCESSING;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isStatusSuspended()
+    {
+        return $this->status == self::STATUS_SUSPENDED;
     }
 }
